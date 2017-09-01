@@ -3,10 +3,9 @@
     <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
     <main>
       <div class="left-side">
-        <span class="title">
-          Welcome to your new project!
-        </span>
         <system-information></system-information>
+        <example></example>
+        <pomodoro></pomodoro>
       </div>
 
       <div class="right-side">
@@ -31,10 +30,12 @@
 
 <script>
   import SystemInformation from './LandingPage/SystemInformation'
+  import Example from './LandingPage/Example.vue'
+  import Pomodoro from './LandingPage/Pomodoro.vue'
 
   export default {
     name: 'landing-page',
-    components: { SystemInformation },
+    components: { SystemInformation, Example, Pomodoro },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
