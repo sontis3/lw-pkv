@@ -33,18 +33,18 @@ export default {
         { text: 'Apples', checked: false }],
       title: 'MSL',
       newItem: ''
-    }
+    };
   },
   methods: {
     addItem () {
-      var text
-      text = this.newItem.trim()
+      var text;
+      text = this.newItem.trim();
       if (text) {
         this.items.push({
           text: text,
           checked: false
-        })
-        this.newItem = ''
+        });
+        this.newItem = '';
       }
     }
   }
