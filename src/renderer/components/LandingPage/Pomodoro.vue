@@ -1,5 +1,5 @@
 <template>
-  <div id="pmodoro" class="container">
+  <div id="pomodoro" class="container">
     <h2>
       <span>Pomodoro</span>
       <button :disabled="state==='started'" @click="start()">
