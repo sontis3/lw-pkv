@@ -1,7 +1,7 @@
 <template>
   <div id="main-container">
-    <activitybar></activitybar>
-    <sidebar></sidebar>
+    <activity-bar></activity-bar>
+    <side-bar></side-bar>
   </div>
 </template>
 
@@ -11,8 +11,8 @@ import SideBar from './MainPage/SideBar';
 
 export default {
   components: {
-    'activitybar': ActivityBar,
-    'sidebar': SideBar
+    'activity-bar': ActivityBar,
+    'side-bar': SideBar
   }
 }
 </script>
