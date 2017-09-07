@@ -1,21 +1,23 @@
 <template>
   <div class="action-bar">
-    <ul class="actions-container" role="toolbar">
-        <li class="action-item" role="button" v-for="item in items"><span :class="'glyphicon ' + item.glyph"></span></li>
+    <ul class="actions-container list-unstyled" role="toolbar">
+        <!-- <li class="action-item" role="button" v-for="item in items"><span :class="'glyphicon ' + item.glyph"></span></li> -->
+        <li class="action-item" role="button" v-for="item in glyphArray"><span :class="'glyphicon ' + item"></span></li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      items: [
-        {glyph: 'glyphicon-cog'},
-        {glyph: 'glyphicon-file'}
-      ]
-    };
-  }
+  // data () {
+  //   return {
+  //     items: [
+  //       {glyph: 'glyphicon-cog'},
+  //       {glyph: 'glyphicon-file'}
+  //     ]
+  //   };
+  // },
+  props: {glyphArray: Array}
 };
 </script>
 
@@ -29,7 +31,6 @@ export default {
   justify-content: flex-end;
   display: inline-block;
   width: 50px;
-  list-style-type: none;
   margin: 0;
   padding: 0;
 }
