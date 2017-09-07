@@ -2,7 +2,7 @@
   <div class="action-bar">
     <ul class="actions-container list-unstyled" role="toolbar">
         <!-- <li class="action-item" role="button" v-for="item in items"><span :class="'glyphicon ' + item.glyph"></span></li> -->
-        <li class="action-item" role="button" v-for="item in glyphArray"><span :class="'glyphicon ' + item"></span></li>
+        <li class="action-item" role="button" v-for="item in iconArray"><span :class="iconType + ' ' + item"></span></li>
     </ul>
   </div>
 </template>
@@ -17,7 +17,10 @@ export default {
   //     ]
   //   };
   // },
-  props: {glyphArray: Array}
+  props: {
+    iconType: String,
+    iconArray: Array
+  }
 };
 </script>
 
@@ -50,7 +53,8 @@ export default {
   opacity: 1;
 }
 
-.actions-container > .action-item .glyphicon {
+.actions-container > .action-item .glyphicon,
+.actions-container > .action-item .fa {
   font-size: 3rem;
   margin-left: 0;
 }

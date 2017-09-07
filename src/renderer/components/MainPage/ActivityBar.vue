@@ -1,8 +1,9 @@
 <template>
   <div class="activity-bar">
     <div class="content">
-    <action-bar v-bind:glyphArray="['glyphicon-file', 'glyphicon-file']"></action-bar>
-    <action-bar v-bind:glyphArray="['glyphicon-cog']"></action-bar>
+    <action-bar :iconType="'fa'" :iconArray="['fa-folder', 'fa-calculator']"></action-bar>
+    <action-bar :iconType="'fa'" :iconArray="['fa-cog']"></action-bar>
+    <!-- <action-bar :iconType="'glyphicon'" :iconArray="['glyphicon-file']"></action-bar> -->
     </div>
   </div>
 </template>
