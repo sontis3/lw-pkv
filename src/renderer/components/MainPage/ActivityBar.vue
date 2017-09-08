@@ -1,5 +1,5 @@
 <template>
-  <div class="activity-bar">
+  <div class="activity-bar" role="navigation">
     <div class="content">
     <action-bar :iconType="'fa'" :iconArray="['fa-folder', 'fa-calculator']"></action-bar>
     <action-bar :iconType="'fa'" :iconArray="['fa-cog']"></action-bar>
@@ -23,6 +23,7 @@ export default {
     background-color: rgb(51, 51, 51);
     height: 100%;
     width: 50px;
+    padding-bottom: 22px;
 }
 
 .content {
