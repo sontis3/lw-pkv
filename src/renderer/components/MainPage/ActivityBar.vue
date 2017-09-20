@@ -1,6 +1,7 @@
 <template>
   <div class="activity-bar" role="navigation">
     <div class="content">
+    <q-action-bar :iconArray="['thumb_up', 'fa-calculator']"></q-action-bar>
     <action-bar :iconType="'fa'" :iconArray="['fa-folder', 'fa-calculator']"></action-bar>
     <action-bar :iconType="'fa'" :iconArray="['fa-cog']"></action-bar>
     <!-- <action-bar :iconType="'glyphicon'" :iconArray="['glyphicon-file']"></action-bar> -->
@@ -10,10 +11,12 @@
 
 <script>
 import ActionBar from './ActivityBar/ActionBar';
+import QActionBar from './ActivityBar/QActionBar';
 
 export default {
   components: {
-    'action-bar': ActionBar
+    'action-bar': ActionBar,
+    'q-action-bar': QActionBar
   }
 }
 </script>

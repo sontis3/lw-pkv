@@ -1,38 +1,32 @@
 <template>
-  <div class="action-bar">
+  <div class="q-action-bar">
     <ul class="actions-container list-unstyled" role="toolbar">
-      <!-- <li class="action-item" role="button" v-for="item in items"><span :class="'glyphicon ' + item.glyph"></span></li> -->
       <li class="action-item" role="button" v-for="item in iconArray">
-        <span :class="iconType + ' ' + item"></span>
+        <q-icon :name="item" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { QIcon } from '../../../../../node_modules/quasar-framework'
 export default {
-  // data () {
-  //   return {
-  //     items: [
-  //       {glyph: 'glyphicon-cog'},
-  //       {glyph: 'glyphicon-file'}
-  //     ]
-  //   };
-  // },
+  components: {
+    QIcon
+  },
   props: {
-    iconType: String,
     iconArray: Array
   }
-};
+}
 </script>
 
 <style>
-.action-bar {
+.q-action-bar {
   text-align: left;
   background-color: inherit;
 }
 
-.action-bar>.actions-container {
+.q-action-bar>.actions-container {
   justify-content: flex-end;
   display: inline-block;
   width: 50px;
@@ -40,7 +34,7 @@ export default {
   padding: 0;
 }
 
-.action-bar>.actions-container>.action-item {
+.q-action-bar>.actions-container>.action-item {
   color: rgb(204, 204, 204);
   display: block;
   position: relative;
@@ -48,15 +42,19 @@ export default {
   margin-left: 10px;
   width: 40px;
   height: 50px;
-  opacity: 0.6;
 }
 
-.action-bar>.actions-container>.action-item:hover {
+.q-action-bar>.actions-container>.action-item .q-icon {
+  opacity: 0.6;
+  font-size: 3rem;
+  margin-left: 0;
+}
+
+.q-action-bar>.actions-container>.action-item .q-icon:hover {
   opacity: 1;
 }
 
-.action-bar>.actions-container>.action-item .glyphicon,
-.action-bar>.actions-container>.action-item .fa {
+.q-action-bar>.actions-container>.q-btn .q-btn-inner {
   font-size: 3rem;
   margin-left: 0;
 }
