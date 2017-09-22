@@ -1,7 +1,7 @@
 <template>
-  <footer class="status-bar" role="contentinfo">
+  <div class="status-bar" role="contentinfo">
 
-  </footer>
+  </div>
 </template>
 
 <script>

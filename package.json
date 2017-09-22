@@ -1,7 +1,7 @@
 {
-  "name": "y",
+  "name": "lw-pkw",
   "version": "0.0.0",
-  "author": "",
+  "author": "zxc",
   "description": "y",
   "license": "MIT",
   "main": "./dist/electron/main.js",
