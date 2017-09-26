@@ -26,7 +26,7 @@ export default {
     background-color: rgb(51, 51, 51);
     height: 100%;
     width: 50px;
-    padding-bottom: 22px;
+    /* padding-bottom: 22px; */
 }
 
 .content {

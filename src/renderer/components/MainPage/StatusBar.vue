@@ -18,7 +18,7 @@ export default {
   width: 100%;
   font-size: 12px;
 	padding: 0 10px;
-	position: absolute;
+	/* position: absolute; */
   bottom: 0;
 }
 </style>

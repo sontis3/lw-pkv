@@ -11,6 +11,6 @@ export default {
 
 <style scoped>
 .side-bar {
-  height: 100%;
+  background-color: rgb(111, 111, 111);
 }
 </style>
