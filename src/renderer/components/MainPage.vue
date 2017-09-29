@@ -7,14 +7,15 @@
               <status-bar slot="footer"></status-bar>
             </q-layout> -->
   <div id="main-container" v-on:mousemove="onMouseMove" v-on:mouseup="onMouseUp" v-bind:style="{gridTemplateColumns: '[activitybarstart] 50px [sidebarstart] ' + sideBarWidth + 'px [sliderstart] 3px [workcontainerstart] 1fr [workcontainerend]'}">
-    <div id="abar" v-on:mousedown.left="onToggleSideBar">
+    <!-- <div id="abar" v-on:mousedown.left="onToggleSideBar"> -->
+    <div id="abar">
       <activity-bar></activity-bar>
     </div>
     <div id="sbar" v-show="seenSideBar" ref="sideBar">
       <q-side-bar></q-side-bar>
     </div>
     <div id="slider" v-show="seenSideBar" v-on:mousedown.left="onMouseDown"></div>
-    <div id="work-container" v-bind:style="{gridColumnStart: gridColumnStart}"></div>
+    <div id="content-container" v-bind:style="{gridColumnStart: gridColumnStart}"></div>
     <div id="footer-container">
       <status-bar></status-bar>
     </div>
@@ -87,8 +88,8 @@ export default {
     },
 
     // переключение видимости сайдбара
-    onToggleSideBar (e) {
-      console.log('toggle SideBar')
+    onToggleSideBar () {
+      console.log('toggle SideBar ')
       this.seenSideBar = !this.seenSideBar
       if (this.seenSideBar) {
         this.gridColumnStart = 'workcontainerstart'
@@ -112,9 +113,10 @@ export default {
 #slider {
   grid-column: sliderstart;
   cursor: col-resize;
+  background-color: rgb(111, 111, 111);
 }
 
-#work-container {
+#content-container {
   grid-column-start: workcontainerstart;
   grid-column-end: workcontainerend;
   background-color: rgb(30, 30, 30);

@@ -2,7 +2,7 @@
   <div class="q-action-bar">
     <ul class="actions-container list-unstyled" role="toolbar">
       <li class="action-item" role="button" v-for="item in iconArray">
-        <q-icon :name="item" />
+        <q-icon :name="item" @click="actionClick" />
       </li>
     </ul>
   </div>
@@ -16,6 +16,12 @@ export default {
   },
   props: {
     iconArray: Array
+  },
+  methods: {
+    actionClick (e) {
+      console.log('action click')
+      // $emit('action-click', e.pageX)
+    }
   }
 }
 </script>

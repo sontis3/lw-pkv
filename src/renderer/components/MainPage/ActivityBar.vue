@@ -1,10 +1,10 @@
 <template>
   <div class="activity-bar" role="navigation">
     <div class="content">
-    <q-action-bar :iconArray="['thumb_up', 'fa-calculator']"></q-action-bar>
-    <action-bar :iconType="'fa'" :iconArray="['fa-folder', 'fa-calculator']"></action-bar>
-    <action-bar :iconType="'fa'" :iconArray="['fa-cog']"></action-bar>
-    <!-- <action-bar :iconType="'glyphicon'" :iconArray="['glyphicon-file']"></action-bar> -->
+      <q-action-bar :iconArray="['thumb_up', 'fa-calculator']" v-on:action-click="onToggleSideBar(actionName)"></q-action-bar>
+      <action-bar :iconType="'fa'" :iconArray="['fa-folder', 'fa-calculator']"></action-bar>
+      <action-bar :iconType="'fa'" :iconArray="['fa-cog']"></action-bar>
+      <!-- <action-bar :iconType="'glyphicon'" :iconArray="['glyphicon-file']"></action-bar> -->
     </div>
   </div>
 </template>
@@ -17,16 +17,22 @@ export default {
   components: {
     'action-bar': ActionBar,
     'q-action-bar': QActionBar
+  },
+
+  methods: {
+    onToggleSideBar (actionName) {
+      console.log('toggle SideBar ' + actionName)
+    }
   }
 }
 </script>
 
 <style>
 .activity-bar {
-    background-color: rgb(51, 51, 51);
-    height: 100%;
-    width: 50px;
-    /* padding-bottom: 22px; */
+  background-color: rgb(51, 51, 51);
+  height: 100%;
+  width: 50px;
+  /* padding-bottom: 22px; */
 }
 
 .content {
