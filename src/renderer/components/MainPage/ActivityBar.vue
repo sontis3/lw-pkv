@@ -1,7 +1,7 @@
 <template>
   <div class="activity-bar" role="navigation">
     <div class="content">
-      <q-action-bar :iconArray="['thumb_up', 'fa-calculator']" @action-click="onToggleSideBar(actionName)"></q-action-bar>
+      <q-action-bar :iconArray="['thumb_up', 'fa-calculator']"></q-action-bar>
       <action-bar :iconType="'fa'" :iconArray="['fa-folder', 'fa-calculator']"></action-bar>
       <action-bar :iconType="'fa'" :iconArray="['fa-cog']"></action-bar>
       <!-- <action-bar :iconType="'glyphicon'" :iconArray="['glyphicon-file']"></action-bar> -->
@@ -12,11 +12,26 @@
 <script>
 import ActionBar from './ActivityBar/ActionBar';
 import QActionBar from './ActivityBar/QActionBar';
+import { EventBus } from '../../event-bus.js';
+
+const onToggleSideBar = function (actionName) {
+  console.log('toggle SideBar ' + actionName)
+}
 
 export default {
   components: {
     'action-bar': ActionBar,
     'q-action-bar': QActionBar
+  },
+
+  mounted () {
+    console.log('mounted ActivityBar')
+    EventBus.$on('action-click', onToggleSideBar)
+  },
+
+  beforeDestroy () {
+    console.log('beforeDestroy ActivityBar')
+    EventBus.$off('action-click', onToggleSideBar)
   },
 
   methods: {

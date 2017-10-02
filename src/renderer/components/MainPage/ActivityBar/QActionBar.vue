@@ -2,14 +2,16 @@
   <div class="q-action-bar">
     <ul class="actions-container list-unstyled" role="toolbar">
       <li class="action-item" role="button" v-for="item in iconArray">
-        <q-icon :name="item" @click="actionClick" />
+        <q-icon :name="item" @click="actionClick(item)" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { QIcon } from '../../../../../node_modules/quasar-framework'
+import { QIcon } from '../../../../../node_modules/quasar-framework';
+import { EventBus } from '../../../event-bus.js';
+
 export default {
   components: {
     QIcon
@@ -18,9 +20,9 @@ export default {
     iconArray: Array
   },
   methods: {
-    actionClick (e) {
+    actionClick (actionItem) {
       console.log('action click')
-      this.$emit('action-click', e.pageX)
+      EventBus.$emit('action-click', actionItem)
     }
   }
 }
