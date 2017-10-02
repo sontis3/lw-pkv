@@ -123,15 +123,16 @@ let rendererConfig = {
         : false
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jquery: "jquery",
-      jQuery: "jquery",
-      "Tether": 'tether',
-      "window.jQuery": "jquery",
-      "window.Tether": 'tether'
-    })
+    new webpack.NoEmitOnErrorsPlugin()
+    // ,
+    // new webpack.ProvidePlugin({
+    //   $: "jquery",
+    //   jquery: "jquery",
+    //   jQuery: "jquery",
+    //   "Tether": 'tether',
+    //   "window.jQuery": "jquery",
+    //   "window.Tether": 'tether'
+    // })
   ],
   output: {
     filename: '[name].js',

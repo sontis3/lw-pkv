@@ -1,7 +1,7 @@
 <template>
   <div class="activity-bar" role="navigation">
     <div class="content">
-      <q-action-bar :iconArray="['thumb_up', 'fa-calculator']" v-on:action-click="onToggleSideBar(actionName)"></q-action-bar>
+      <q-action-bar :iconArray="['thumb_up', 'fa-calculator']" @action-click="onToggleSideBar(actionName)"></q-action-bar>
       <action-bar :iconType="'fa'" :iconArray="['fa-folder', 'fa-calculator']"></action-bar>
       <action-bar :iconType="'fa'" :iconArray="['fa-cog']"></action-bar>
       <!-- <action-bar :iconType="'glyphicon'" :iconArray="['glyphicon-file']"></action-bar> -->

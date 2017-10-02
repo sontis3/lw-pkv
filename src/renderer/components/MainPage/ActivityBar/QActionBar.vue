@@ -20,7 +20,7 @@ export default {
   methods: {
     actionClick (e) {
       console.log('action click')
-      // $emit('action-click', e.pageX)
+      this.$emit('action-click', e.pageX)
     }
   }
 }
