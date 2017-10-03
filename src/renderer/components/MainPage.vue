@@ -1,13 +1,12 @@
 <template>
   <!-- <q-layout view="lhh lpr fFf">
-              <div id="left-bar" slot="left">
-                <activity-bar id="abar" class="vertical-top"></activity-bar>
-                <q-side-bar id="sbar" class="vertical-top"></q-side-bar>
-              </div>
-              <status-bar slot="footer"></status-bar>
-            </q-layout> -->
+                  <div id="left-bar" slot="left">
+                    <activity-bar id="abar" class="vertical-top"></activity-bar>
+                    <q-side-bar id="sbar" class="vertical-top"></q-side-bar>
+                  </div>
+                  <status-bar slot="footer"></status-bar>
+                </q-layout> -->
   <div id="main-container" v-on:mousemove="onMouseMove" v-on:mouseup="onMouseUp" v-bind:style="{gridTemplateColumns: '[activitybarstart] 50px [sidebarstart] ' + sideBarWidth + 'px [sliderstart] 3px [workcontainerstart] 1fr [workcontainerend]'}">
-    <!-- <div id="abar" v-on:mousedown.left="onToggleSideBar"> -->
     <div id="abar">
       <activity-bar></activity-bar>
     </div>
@@ -27,6 +26,8 @@
 import ActivityBar from './MainPage/ActivityBar';
 import QSideBar from './MainPage/QSideBar';
 import StatusBar from './MainPage/StatusBar'
+import { EventBus } from '../event-bus.js';
+import { mapActions } from 'vuex';
 
 export default {
   components: {
@@ -48,13 +49,16 @@ export default {
     console.log('main-container mounted')
     const vm = this
     vm.sideBarWidth = this.$refs.sideBar.offsetWidth
+    EventBus.$on('action-click', this.onToggleSideBar)
   },
 
   beforeDestroy () {
     console.log('main-container beforeDestroy')
+    EventBus.$off('action-click', this.onToggleSideBar)
   },
 
   methods: {
+    ...mapActions(['changeAction']),
     onMouseDown (e) {
       console.log('mouse down')
       const vm = this
@@ -88,9 +92,14 @@ export default {
     },
 
     // переключение видимости сайдбара
-    onToggleSideBar () {
-      console.log('toggle SideBar ')
-      this.seenSideBar = !this.seenSideBar
+    onToggleSideBar (actionName) {
+      console.log('toggle SideBar ' + actionName)
+      if (this.$store.state.Action.current === actionName) {
+        this.seenSideBar = !this.seenSideBar
+      } else {
+        this.changeAction(actionName)
+        this.seenSideBar = true
+      }
       if (this.seenSideBar) {
         this.gridColumnStart = 'workcontainerstart'
       } else {

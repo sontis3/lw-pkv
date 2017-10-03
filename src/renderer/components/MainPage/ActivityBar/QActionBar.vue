@@ -11,18 +11,22 @@
 <script>
 import { QIcon } from '../../../../../node_modules/quasar-framework';
 import { EventBus } from '../../../event-bus.js';
+import { settings } from '../../settings.js'
 
 export default {
   components: {
     QIcon
   },
+
   props: {
     iconArray: Array
   },
+
   methods: {
     actionClick (actionItem) {
       console.log('action click')
-      EventBus.$emit('action-click', actionItem)
+
+      EventBus.$emit('action-click', settings.ACTION_MAP.get(actionItem))
     }
   }
 }
