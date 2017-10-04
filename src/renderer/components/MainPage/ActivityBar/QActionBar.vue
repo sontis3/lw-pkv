@@ -2,7 +2,7 @@
   <div class="q-action-bar">
     <ul class="actions-container list-unstyled" role="toolbar">
       <li class="action-item" role="button" v-for="item in iconArray">
-        <q-icon :name="item" @click="actionClick(item)" />
+        <q-icon :name="item" @click="actionClick(item)" :class="{checked: checked == item}" />
       </li>
     </ul>
   </div>
@@ -19,6 +19,7 @@ export default {
   },
 
   props: {
+    checked: '',
     iconArray: Array
   },
 
@@ -26,13 +27,16 @@ export default {
     actionClick (actionItem) {
       console.log('action click')
 
+      const vm = this
+      vm.checked = actionItem
+
       EventBus.$emit('action-click', settings.ACTION_MAP.get(actionItem))
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .q-action-bar {
   text-align: left;
   background-color: inherit;
@@ -63,6 +67,10 @@ export default {
 }
 
 .q-action-bar>.actions-container>.action-item .q-icon:hover {
+  opacity: 1;
+}
+
+.q-action-bar>.actions-container>.action-item .q-icon.checked {
   opacity: 1;
 }
 

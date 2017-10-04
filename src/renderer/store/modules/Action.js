@@ -1,5 +1,5 @@
 const state = {
-  current: 'files'
+  current: 'explorer'
 }
 
 const mutations = {

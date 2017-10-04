@@ -2,7 +2,7 @@
   <div class="activity-bar" role="navigation">
     <div class="content">
       <q-action-bar :iconArray="['fa-folder', 'fa-calculator']"></q-action-bar>
-      <action-bar :iconType="'fa'" :iconArray="['fa-folder', 'fa-calculator']"></action-bar>
+      <!-- <action-bar :iconType="'fa'" :iconArray="['fa-folder', 'fa-calculator']"></action-bar> -->
       <q-action-bar :iconArray="['fa-cog']"></q-action-bar>
       <!-- <action-bar :iconType="'glyphicon'" :iconArray="['glyphicon-file']"></action-bar> -->
     </div>

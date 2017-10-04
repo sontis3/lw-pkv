@@ -11,7 +11,7 @@
       <activity-bar></activity-bar>
     </div>
     <div id="sbar" v-show="seenSideBar" ref="sideBar">
-      <q-side-bar></q-side-bar>
+      <side-bar :sideBarType="$store.state.Action.current"></side-bar>
     </div>
     <div id="slider" v-show="seenSideBar" v-on:mousedown.left="onMouseDown"></div>
     <div id="content-container" v-bind:style="{gridColumnStart: gridColumnStart}"></div>
@@ -24,7 +24,7 @@
 <script>
 // import { QLayout } from '../../../node_modules/quasar-framework'
 import ActivityBar from './MainPage/ActivityBar';
-import QSideBar from './MainPage/QSideBar';
+import SideBar from './MainPage/SideBar';
 import StatusBar from './MainPage/StatusBar'
 import { EventBus } from '../event-bus.js';
 import { mapActions } from 'vuex';
@@ -33,7 +33,7 @@ export default {
   components: {
     // QLayout,
     'activity-bar': ActivityBar,
-    'q-side-bar': QSideBar,
+    'side-bar': SideBar,
     'status-bar': StatusBar
   },
 
@@ -58,18 +58,24 @@ export default {
   },
 
   methods: {
+    // акции vuex
     ...mapActions(['changeAction']),
+
+    // нажатие мыши на слайдер (для отслеживания начала перемещения)
     onMouseDown (e) {
       console.log('mouse down')
       const vm = this
       vm.isStartMove = true
       vm.startPageX = e.pageX
     },
+
+    // перемещение слайдера
     onMouseMove (e) {
       const vm = this
       if (vm.isStartMove === true) {
         const moveX = e.pageX - vm.startPageX
         this.sideBarWidth += moveX
+
         // ограничение на минимальную ширину сайдбара
         if (moveX < 0 && this.sideBarWidth < 200) {
           vm.startPageX = e.pageX + 200 - this.sideBarWidth
@@ -85,13 +91,15 @@ export default {
         console.log('mouse move ' + moveX + '= ' + this.sideBarWidth)
       }
     },
+
+    // конец перемещения слайдера
     onMouseUp (e) {
       console.log('mouse up')
       const vm = this
       vm.isStartMove = undefined
     },
 
-    // переключение видимости сайдбара
+    // переключение видимости сайдбара (если кликаем на одну и ту же акцию)
     onToggleSideBar (actionName) {
       console.log('toggle SideBar ' + actionName)
       if (this.$store.state.Action.current === actionName) {
@@ -100,6 +108,7 @@ export default {
         this.changeAction(actionName)
         this.seenSideBar = true
       }
+
       if (this.seenSideBar) {
         this.gridColumnStart = 'workcontainerstart'
       } else {
