@@ -100,7 +100,7 @@ export default {
     },
 
     // переключение видимости сайдбара (если кликаем на одну и ту же акцию)
-    onToggleSideBar (actionName) {
+    onToggleSideBar (actionName, actionItem) {
       console.log('toggle SideBar ' + actionName)
       if (this.$store.state.Action.current === actionName) {
         this.seenSideBar = !this.seenSideBar

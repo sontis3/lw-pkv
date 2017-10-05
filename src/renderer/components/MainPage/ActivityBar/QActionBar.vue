@@ -11,27 +11,48 @@
 <script>
 import { QIcon } from '../../../../../node_modules/quasar-framework';
 import { EventBus } from '../../../event-bus.js';
-import { settings } from '../../settings.js'
+import { settings } from '../../settings.js';
 
 export default {
   components: {
     QIcon
   },
 
+  data () {
+    return {
+      checked: ''
+    }
+  },
+
   props: {
-    checked: '',
+    // checked: '',
     iconArray: Array
+  },
+
+  mounted () {
+    EventBus.$on('action-click', this.onActionClick)
+  },
+
+  beforeDestroy () {
+    EventBus.$off('action-click', this.onActionClick)
   },
 
   methods: {
     actionClick (actionItem) {
       console.log('action click')
-
       const vm = this
       vm.checked = actionItem
 
-      EventBus.$emit('action-click', settings.ACTION_MAP.get(actionItem))
+      EventBus.$emit('action-click', settings.ACTION_MAP.get(actionItem), actionItem)
+    },
+
+    // отключение акции в баре, где не было клика акции
+    onActionClick (actionName, actionItem) {
+      console.log('toggle SideBar ' + actionName)
+      const vm = this
+      vm.checked = actionItem
     }
+
   }
 }
 </script>
