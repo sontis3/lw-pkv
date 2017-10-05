@@ -23,7 +23,11 @@ export default {
 
 <style scoped>
 .side-bar {
-  background-color: rgb(111, 111, 111);
+  font-family: verdana;
+  font-size: 12px;
+  font-weight: 200;
+  background-color: #2e353d;
   height: 100%;
+  color: #e1ffff;
 }
 </style>

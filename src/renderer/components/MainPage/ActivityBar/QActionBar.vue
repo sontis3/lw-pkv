@@ -20,12 +20,11 @@ export default {
 
   data () {
     return {
-      checked: ''
+      checked: 'fa-folder'
     }
   },
 
   props: {
-    // checked: '',
     iconArray: Array
   },
 
@@ -39,7 +38,7 @@ export default {
 
   methods: {
     actionClick (actionItem) {
-      console.log('action click')
+      console.log('click ' + actionItem)
       const vm = this
       vm.checked = actionItem
 
@@ -48,7 +47,7 @@ export default {
 
     // отключение акции в баре, где не было клика акции
     onActionClick (actionName, actionItem) {
-      console.log('toggle SideBar ' + actionName)
+      console.log('action checked ' + actionName)
       const vm = this
       vm.checked = actionItem
     }

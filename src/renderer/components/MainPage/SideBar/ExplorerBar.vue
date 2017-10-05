@@ -1,11 +1,20 @@
 <template>
   <div class="explorer-bar">
-    здесь будет ExplorerBar
+    <q-list>
+      <q-list-header>Панель проводника</q-list-header>
+    </q-list>
   </div>
 </template>
 
 <script>
+import { QList, QListHeader, QItem } from '../../../../../node_modules/quasar-framework';
+
 export default {
+  components: {
+    QList,
+    QListHeader,
+    QItem
+  }
 
 }
 </script>
