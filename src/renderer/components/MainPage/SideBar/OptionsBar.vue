@@ -5,22 +5,30 @@
       <q-collapsible icon="fa-puzzle-piece" label="Проект">
         <q-item></q-item>
       </q-collapsible>
-      <q-collapsible icon="fa-gears" label="Система">
-        <q-item></q-item>
+      <q-collapsible indent icon="fa-gears" label="Система">
+        <q-item>
+          <q-item-main>Шаблоны</q-item-main>
+        </q-item>
+        <q-item-separator />
+        <q-item>
+          <q-item-main>О программе</q-item-main>
+        </q-item>
       </q-collapsible>
     </q-list>
   </div>
 </template>
 
 <script>
-import { QList, QListHeader, QCollapsible, QItem } from '../../../../../node_modules/quasar-framework';
+import { QList, QListHeader, QCollapsible, QItem, QItemMain, QItemSeparator } from '../../../../../node_modules/quasar-framework';
 
 export default {
   components: {
     QList,
     QListHeader,
     QCollapsible,
-    QItem
+    QItem,
+    QItemMain,
+    QItemSeparator
   }
 
 }

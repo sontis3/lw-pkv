@@ -15,7 +15,8 @@ import '../../node_modules/quasar-extras/material-icons'
 import '../../node_modules/quasar-extras/ionicons'
 import '../../node_modules/quasar-extras/fontawesome'
 import Quasar from '../../node_modules/quasar-framework'
-import '../../node_modules/quasar-framework/dist/quasar.mat.css'
+// import '../../node_modules/quasar-framework/dist/quasar.mat.css'
+import '../../node_modules/quasar-framework/dist/quasar.mat.styl'
 Vue.use(Quasar)
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))

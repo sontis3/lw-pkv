@@ -36,3 +36,12 @@ export default {
   justify-content: space-between;
 }
 </style>
+
+<style lang="stylus">
+@import '../../../../node_modules/quasar-framework/dist/core.variables'
+
+// .q-item
+//   $item-padding 4px 16px
+//   $item-font-size 12px
+</style>
+
