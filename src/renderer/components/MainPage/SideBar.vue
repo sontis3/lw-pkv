@@ -25,6 +25,7 @@ export default {
 .side-bar {
   font-family: verdana;
   font-size: 12px;
+  line-height: initial;
   font-weight: 200;
   background-color: #2e353d;
   height: 100%;
