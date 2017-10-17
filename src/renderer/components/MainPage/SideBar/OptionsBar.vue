@@ -6,19 +6,18 @@
         <q-item></q-item>
       </q-collapsible>
       <q-collapsible indent icon="fa-gears" label="Система">
-        <q-tree :model="treeModel_System"></q-tree>
-        <!-- <q-item>
-          <q-item-main>Шаблоны</q-item-main>
-        </q-item>
-        <q-item-separator />
-        <q-item>
-          <q-item-main>О программе</q-item-main>
-        </q-item>
-        <q-item>
-          <q-item-main>
-            <q-tree :model="treeModel_About"></q-tree>
-          </q-item-main>
-        </q-item> -->
+        <!-- <q-tree :model="treeModel_System" contract-html="" expand-html=""></q-tree> -->
+        <q-list>
+          <q-collapsible indent icon="style" label="Шаблоны">
+            <q-list>
+              <q-collapsible indent label="Время"></q-collapsible>
+              <q-collapsible indent label="Рандомизация"></q-collapsible>
+              <q-collapsible indent label="Данные"></q-collapsible>
+            </q-list>
+          </q-collapsible>
+          <q-collapsible indent icon="fa-info" label="О программе">
+          </q-collapsible>
+        </q-list>
       </q-collapsible>
     </q-list>
   </div>
@@ -40,22 +39,45 @@ export default {
 
   data () {
     return {
+      selected: 'Templates',
       treeModel_System: [
         {
           title: 'Шаблоны',
+          id: 'Templates',
           expanded: false,
           icon: 'style',
           handler: this.treeItemClick,
-          children: [],
-          id: 'Templates'
+          children: [
+            {
+              title: 'Время',
+              id: 'Times',
+              expanded: false,
+              handler: this.treeItemClick,
+              children: []
+            },
+            {
+              title: 'Рандомизация',
+              id: 'RandLists',
+              expanded: false,
+              handler: this.treeItemClick,
+              children: []
+            },
+            {
+              title: 'Данные',
+              id: 'Datas',
+              expanded: false,
+              handler: this.treeItemClick,
+              children: []
+            }
+          ]
         },
         {
           title: 'О программе',
+          id: 'About',
           expanded: false,
           icon: 'fa-info',
           handler: this.treeItemClick,
-          children: [],
-          id: 'About'
+          children: []
         }
       ]
     }
@@ -63,9 +85,10 @@ export default {
 
   methods: {
     treeItemClick (item) {
-      var currentSelect = {
-        action: 'options'
-      }
+      // var currentSelect = {
+      //   action: 'options'
+      // }
+      this.selected = item.id
       console.log('About...' + item.id)
     }
   }
@@ -96,10 +119,17 @@ export default {
   font-size: 18px;
 }
 
+.q-item-side {
+  min-width: 20px;
+}
+
 .q-collapsible>.q-item {
-  padding: 2px 16px;
-  background-color: rgba(128, 128, 128, 0.2);
+  padding: 2px 8px;
   font-weight: bold;
+}
+
+.options-bar>.q-list>.q-collapsible>.q-item {
+  background-color: rgba(128, 128, 128, 0.2);
 }
 
 .q-collapsible-sub-item.relative-position {
@@ -108,12 +138,17 @@ export default {
 }
 
 .q-collapsible-sub-item.indent {
-  padding-left: 0px;
+  padding-left: 24px;
 }
+/* 
 
 .q-collapsible-sub-item>.q-item {
   padding: 0px 16px;
   font-weight: 100;
   line-height: 22px;
+}
+ */
+div.row.q-tree-link {
+  margin-left: 13px;
 }
 </style>
