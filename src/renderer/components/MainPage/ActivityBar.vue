@@ -38,7 +38,8 @@ export default {
 </style>
 
 <style lang="stylus">
-@import '../../../../node_modules/quasar-framework/dist/core.variables'
+// управление quasar через переменные
+// @import '../../../../node_modules/quasar-framework/dist/core.variables'
 
 // .q-item
 //   $item-padding 4px 16px

@@ -1,5 +1,6 @@
+// текущее состояние Activity Bar
 const state = {
-  current: 'explorer'
+  current: 'options'
 }
 
 const mutations = {

@@ -1,6 +1,6 @@
 <template>
   <div class="explorer-bar">
-    <q-list>
+    <q-list no-border dense>
       <q-list-header>Панель проводника</q-list-header>
     </q-list>
   </div>

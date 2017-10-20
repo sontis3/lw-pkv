@@ -20,7 +20,8 @@ export default {
 
   data () {
     return {
-      checked: 'fa-folder'
+      // выбранная акция
+      checked: 'fa-cog'
     }
   },
 

@@ -6,15 +6,15 @@
                   </div>
                   <status-bar slot="footer"></status-bar>
                 </q-layout> -->
-  <div id="main-container" v-on:mousemove="onMouseMove" v-on:mouseup="onMouseUp" v-bind:style="{gridTemplateColumns: '[activitybarstart] 50px [sidebarstart] ' + sideBarWidth + 'px [sliderstart] 3px [workcontainerstart] 1fr [workcontainerend]'}">
+  <div id="main-container" @mousemove="onMouseMove" @mouseup="onMouseUp" :style="{gridTemplateColumns: '[activitybarstart] 50px [sidebarstart] ' + sideBarWidth + 'px [sliderstart] 3px [workcontainerstart] 1fr [workcontainerend]'}">
     <div id="abar">
       <activity-bar></activity-bar>
     </div>
     <div id="sbar" v-show="seenSideBar" ref="sideBar">
       <side-bar :sideBarType="$store.state.Action.current"></side-bar>
     </div>
-    <div id="slider" v-show="seenSideBar" v-on:mousedown.left="onMouseDown"></div>
-    <div id="content-container" v-bind:style="{gridColumnStart: gridColumnStart}"></div>
+    <div id="slider" v-show="seenSideBar" @mousedown.left="onMouseDown"></div>
+    <content-container id="c-container" :style="{gridColumnStart: gridColumnStart}"></content-container>
     <div id="footer-container">
       <status-bar></status-bar>
     </div>
@@ -25,6 +25,7 @@
 // import { QLayout } from '../../../node_modules/quasar-framework'
 import ActivityBar from './MainPage/ActivityBar';
 import SideBar from './MainPage/SideBar';
+import ContentContainer from './MainPage/ContentContainer';
 import StatusBar from './MainPage/StatusBar'
 import { EventBus } from '../event-bus.js';
 import { mapActions } from 'vuex';
@@ -34,6 +35,7 @@ export default {
     // QLayout,
     'activity-bar': ActivityBar,
     'side-bar': SideBar,
+    'content-container': ContentContainer,
     'status-bar': StatusBar
   },
 
@@ -134,7 +136,7 @@ export default {
   background-color: rgb(111, 111, 111);
 }
 
-#content-container {
+#c-container {
   grid-column-start: workcontainerstart;
   grid-column-end: workcontainerend;
   background-color: rgb(30, 30, 30);

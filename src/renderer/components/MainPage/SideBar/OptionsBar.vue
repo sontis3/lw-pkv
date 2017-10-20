@@ -1,22 +1,21 @@
 <template>
   <div class="options-bar">
-    <q-list>
+    <q-list no-border dense>
       <q-list-header>Настройки</q-list-header>
-      <q-collapsible icon="fa-puzzle-piece" label="Проект">
+      <q-collapsible indent dense icon="fa-puzzle-piece" label="Проект">
         <q-item></q-item>
       </q-collapsible>
-      <q-collapsible indent icon="fa-gears" label="Система">
+      <q-collapsible indent dense icon="fa-gears" label="Система">
         <!-- <q-tree :model="treeModel_System" contract-html="" expand-html=""></q-tree> -->
-        <q-list>
-          <q-collapsible indent icon="style" label="Шаблоны">
-            <q-list>
-              <q-collapsible indent label="Время"></q-collapsible>
-              <q-collapsible indent label="Рандомизация"></q-collapsible>
-              <q-collapsible indent label="Данные"></q-collapsible>
+        <q-list no-border dense>
+          <q-collapsible indent dense icon="style" label="Шаблоны">
+            <q-list no-border dense>
+              <q-collapsible indent dense label="Время" @open="tempClick('Times')" :class="{selected: selected == 'Times'}" ></q-collapsible>
+              <q-collapsible indent dense label="Рандомизация" @open="tempClick('RandLists')" :class="{selected: selected == 'RandLists'}" ></q-collapsible>
+              <q-collapsible indent dense label="Данные" @open="tempClick('Datas')" :class="{selected: selected == 'Datas'}" ></q-collapsible>
             </q-list>
           </q-collapsible>
-          <q-collapsible indent icon="fa-info" label="О программе">
-          </q-collapsible>
+          <q-collapsible indent dense icon="fa-info" label="О программе"></q-collapsible>
         </q-list>
       </q-collapsible>
     </q-list>
@@ -39,51 +38,58 @@ export default {
 
   data () {
     return {
-      selected: 'Templates',
-      treeModel_System: [
-        {
-          title: 'Шаблоны',
-          id: 'Templates',
-          expanded: false,
-          icon: 'style',
-          handler: this.treeItemClick,
-          children: [
-            {
-              title: 'Время',
-              id: 'Times',
-              expanded: false,
-              handler: this.treeItemClick,
-              children: []
-            },
-            {
-              title: 'Рандомизация',
-              id: 'RandLists',
-              expanded: false,
-              handler: this.treeItemClick,
-              children: []
-            },
-            {
-              title: 'Данные',
-              id: 'Datas',
-              expanded: false,
-              handler: this.treeItemClick,
-              children: []
-            }
-          ]
-        },
-        {
-          title: 'О программе',
-          id: 'About',
-          expanded: false,
-          icon: 'fa-info',
-          handler: this.treeItemClick,
-          children: []
-        }
-      ]
+      selected: 'Times'
+      // treeModel_System: [
+      //   {
+      //     title: 'Шаблоны',
+      //     id: 'Templates',
+      //     expanded: false,
+      //     icon: 'style',
+      //     handler: this.treeItemClick,
+      //     children: [
+      //       {
+      //         title: 'Время',
+      //         id: 'Times',
+      //         expanded: false,
+      //         handler: this.treeItemClick,
+      //         children: []
+      //       },
+      //       {
+      //         title: 'Рандомизация',
+      //         id: 'RandLists',
+      //         expanded: false,
+      //         handler: this.treeItemClick,
+      //         children: []
+      //       },
+      //       {
+      //         title: 'Данные',
+      //         id: 'Datas',
+      //         expanded: false,
+      //         handler: this.treeItemClick,
+      //         children: []
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     title: 'О программе',
+      //     id: 'About',
+      //     expanded: false,
+      //     icon: 'fa-info',
+      //     handler: this.treeItemClick,
+      //     children: []
+      //   }
+      // ]
     }
   },
 
   methods: {
+    // выделение выбранного шаблона
+    tempClick (tempItem) {
+      console.log('click templates ' + tempItem)
+      const vm = this
+      vm.selected = tempItem
+    },
+
     treeItemClick (item) {
       // var currentSelect = {
       //   action: 'options'
@@ -97,10 +103,9 @@ export default {
 </script>
 
 <style>
-.q-list {
+/* .q-list {
   padding: 0;
-  border: none;
-}
+} */
 
 .q-list-header {
   background-color: #23282e;
@@ -126,6 +131,10 @@ export default {
 .q-collapsible>.q-item {
   padding: 2px 8px;
   font-weight: bold;
+}
+
+.q-collapsible.selected {
+  background-color: rgb(9, 71, 113);
 }
 
 .options-bar>.q-list>.q-collapsible>.q-item {
