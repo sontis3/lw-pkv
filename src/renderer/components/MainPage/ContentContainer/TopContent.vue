@@ -33,7 +33,7 @@ export default {
         },
         {
           name: 'Test2',
-          label: 'test2',
+          label: 'test22',
           content: '222'
         }
       ]
