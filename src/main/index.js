@@ -32,6 +32,12 @@ function createWindow () {
   })
 }
 
+// установка прокси
+if (process.env.NODE_ENV === 'development') {
+  app.commandLine.appendSwitch('proxy-server', 'proxy-nic.1msmu.ru:3128')
+  app.commandLine.appendSwitch('proxy-bypass-list', '<local>')
+}
+
 app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {

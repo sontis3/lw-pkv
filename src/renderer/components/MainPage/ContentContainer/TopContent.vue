@@ -1,15 +1,16 @@
 <template>
   <div class="top-content">
-    <q-tabs inverted align="left" color="tertiary">
+    <!-- <q-tabs inverted align="left" color="tertiary">
       <q-tab slot="title" name="tab-1" label="asd12"/>
       <q-tab slot="title" name="tab-12" label="qwe12"/>
       <q-tab-pane name="tab-1">Tab 1</q-tab-pane>
-    </q-tabs>
-
-    <!-- <q-tabs inverted align="left" color="tertiary">
-      <q-tab v-for="_tab in tabs" :key="_tab.label" slot="title" name="_tab.name" :label="_tab.label" />
-      <q-tab-pane v-for="_tab in tabs" :key="_tab.label" name="_tab.name">{{ _tab.content }}</q-tab-pane>
+      <q-tab-pane name="tab-12">Tab 12</q-tab-pane>
     </q-tabs> -->
+
+    <q-tabs inverted align="left" color="tertiary">
+      <q-tab v-for="_tab in tabs" :key="_tab.label" slot="title" :name="_tab.name" :label="_tab.label" />
+      <q-tab-pane v-for="_tab in tabs" :key="_tab.label" :name="_tab.name">{{ _tab.content }}</q-tab-pane>
+    </q-tabs>
   </div>
 </template>
 
